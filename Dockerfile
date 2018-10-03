@@ -1,12 +1,8 @@
-FROM tomcat:8
-
-ENV CATALINA_HOME /usr/local/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
-RUN mkdir -p "$CATALINA_HOME"
-WORKDIR $CATALINA_HOME
+FROM tomcat:8.0.43-jre8
 
 COPY target/jpetstore.war /usr/local/tomcat/webapps/jpetstore.war
 
 EXPOSE 8080
 
-CMD ["catalina.sh", "run"]
+CMD chmod +x /usr/local/tomcat/bin/catalina.sh
+CMD ["catalina.sh","run"]
